@@ -78,6 +78,15 @@ b. Given a ciphertext encoded by your generalized Caeser cipher, how would you c
   caeserEncChar :: Int -> Char -> Char
   caeserEncChar k c = decode $ (k + encode c) `mod` 26
   
-  caeserEncMsg :: Int -> [Int] -> [Int]
+  caeserDec :: Int -> Int -> Int
+  caeserDec k e = decode $ (k - e) `mod` 26
+  
+  caeserDecChar :: Int -> Char -> Char
+  caeserDecChar k c = decode $ (encode c - k) `mod` 26
+  
+  caeserEncMsg :: Int -> String -> String
   caeserEncMsg k = map (caeserEnc k)
+  
+  caeserDecMsg :: Int -> String -> String
+  caeserDecMsg k = map (caeserDecChar k)
 ```
