@@ -13,8 +13,13 @@ Doc class     : [11pt]article
 # Counting
 An urn contains 15 red, distinctly labeled, balls, and 10 white, distinctly labeled balls. 5 balls are picked from the urn.\
 a. How many different samples are possible?\
+$C(25, 5) = 53130$
+
 b. How many samples contain only red balls?\
+$C(15,5) = 3003$
+
 c. How many samples contain 3 red balls and 2 white balls?\
+$C(15,3) * C(10,2) = 20,475$
 
 # Conditional Probability and Bayes Theorem
 Given two urns: Urn A has 10 gold coins and 5 silver coins while Urn B has 2 gold coins and 8 silver coins.
