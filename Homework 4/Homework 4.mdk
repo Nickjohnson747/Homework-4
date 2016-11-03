@@ -36,7 +36,9 @@ c. How many samples contain 3 red balls and 2 white balls?\
 Given two urns: Urn A has 10 gold coins and 5 silver coins while Urn B has 2 gold coins and 8 silver coins.
 Alice first randomly picks an urn then randomly pick a coin from the urn. It turns out that the coin is golden. She then puts the coin back into the urn and then randomly draws another coin and it is still a golden one.
 What is the probability that it was Urn A being picked in the first place?
-
+~Equation
+{\frac {{\frac {4} {9}} * {\frac {1} {2}}} {\left({\frac {4} {9}} * {\frac {1} {2}}\right) + \left({\frac {1} {25}}\right) * \left({\frac {1} {2}}\right)}}  = {\frac {100} {109}}
+~
 
 # Random Variables
 Randomly throwing 100 balls into 20 bins, how many bins (on average) will end up empty?
