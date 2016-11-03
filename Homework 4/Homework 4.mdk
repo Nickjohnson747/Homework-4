@@ -27,11 +27,12 @@ Randomly throwing 100 balls into 20 bins, how many bins (on average) will end up
 
 # Modulo Arithmetic and Primes
 a. Compute the following numbers
-  - 2135 mod 23
-  - -2135 mod 23
-  - 2135 mod (-23)
-  - -2135 mod (-23)
-	b. Write a Haskell function that print the sum of the first `n` primes
+  - 2135 mod 23 = 19 
+  - -2135 mod 23 = 4
+  - 2135 mod (-23) = -4
+  - -2135 mod (-23) = -19
+  
+b. Write a Haskell function that print the sum of the first `n` primes
 	``` haskell
 	sumOfPrimes :: Int -> Integer
 	sumOfPrimes n = undefined
