@@ -1,0 +1,113 @@
+Title         : Homework 4
+Title Note    : Due on Nov 4 Friday
+Author        : Nick Johnson
+Email         : nj41@iu.edu
+Doc class     : [11pt]article
+
+~ MathDefs
+\newcommand{\jacobi}[2]{\ensuremath{\left(\frac{#1}{#2}\right)}}
+~
+
+
+[TITLE]
+# Counting
+An urn contains 15 red, distinctly labeled, balls, and 10 white, distinctly labeled balls. 5 balls are picked from the urn.\
+a. How many different samples are possible?\
+
+~ Equation
+\left(\frac {n!}  {(n-r!) * r!} \right)
+~
+
+~ Equation
+\left(\frac {25!} {(25-5)! * 5!} \right) = 53130
+~
+b. How many samples contain only red balls?\
+
+~ Equation
+\left(\frac {15!} {(15-5)! * 5!} \right) = 3003
+~
+
+c. How many samples contain 3 red balls and 2 white balls?\
+
+~ Equation
+\left(\frac {15!} {(15-3)! * 3!} \right) * \left(\frac {10!} {(10-2)! * 2!} \right) = 20475 
+~
+# Conditional Probability and Bayes Theorem
+Given two urns: Urn A has 10 gold coins and 5 silver coins while Urn B has 2 gold coins and 8 silver coins.
+Alice first randomly picks an urn then randomly pick a coin from the urn. It turns out that the coin is golden. She then puts the coin back into the urn and then randomly draws another coin and it is still a golden one.
+What is the probability that it was Urn A being picked in the first place?
+~Equation
+{\frac {{\frac {4} {9}} * {\frac {1} {2}}} {\left({\frac {4} {9}} * {\frac {1} {2}}\right) + \left({\frac {1} {25}} * {\frac {1} {2}}\right)}}  = {\frac {100} {109}}
+~
+
+# Random Variables
+Randomly throwing 100 balls into 20 bins, how many bins (on average) will end up empty?
+~ Equation
+\left({\frac {20-1} {20}}\right) ^ {100} * 20 = 0.1184
+~
+# Modulo Arithmetic and Primes
+a. Compute the following numbers
+  - 2135 mod 23 = 19 
+  - -2135 mod 23 = 4
+  - 2135 mod (-23) = -4
+  - -2135 mod (-23) = -19
+  
+b. Write a Haskell function that print the sum of the first `n` primes
+	``` haskell
+	sumOfPrimes :: Int -> Integer
+	sumOfPrimes n = undefined
+	```
+	For example,
+	``` {padding-left:1ex; padding-right:1ex; padding-top:.75ex; padding-bottom:.25ex; background-color:black; color:white; font-size:14pt }
+	Prelude λ> sumOfPrimes 4
+	17
+	Prelude λ> sumOfPrimes 12
+	197
+	```
+
+# Bonus Problem 1 (5 points)
+**You have to submit your haskell source code in a separate `.hs` file.**\
+\
+a. The Caeser cipher we discussed in class can only handle capital letters. Can you write a generalized Caeser in Haskell that is able to appropriately deal with upper and lower case letters, numbers, plus six basic punctuation marks including `, . ' " ! ?`.   
+
+b. Given a ciphertext encoded by your generalized Caeser cipher, how would you crack the ciphertext without knowing the key? Explain your idea and implement it in Haskell.
+
+``` haskell
+  import Data.Char (ord, chr)
+  
+  encode :: Char -> Int
+  encode c = ord c - 65
+  
+  -- encode 'A' = 0
+  -- encode 'B' = 1
+  -- encode 'C' = 2
+  -- -- ...
+  -- encode 'Z' = 25
+  
+  decode :: Int -> Char
+  decode i = chr(i + 65)
+  
+  encodeMsg :: String -> [Int]
+  encodeMsg = map encode
+  
+  decodeMsg :: [Int] -> String
+  decodeMsg = map decode
+  
+  caeserEnc :: Int -> Int -> Int
+  caeserEnc k e = (k+e) `mod` 26
+  
+  caeserEncChar :: Int -> Char -> Char
+  caeserEncChar k c = decode $ (k + encode c) `mod` 26
+  
+  caeserDec :: Int -> Int -> Int
+  caeserDec k e = decode $ (k - e) `mod` 26
+  
+  caeserDecChar :: Int -> Char -> Char
+  caeserDecChar k c = decode $ (encode c - k) `mod` 26
+  
+  caeserEncMsg :: Int -> String -> String
+  caeserEncMsg k = map (caeserEnc k)
+  
+  caeserDecMsg :: Int -> String -> String
+  caeserDecMsg k = map (caeserDec k)
+```
